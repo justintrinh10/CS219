@@ -3,6 +3,30 @@ T CommandLine<T>::alu(){
     if(operation == "ADD"){
         return operand1 + operand2;
     }
+    else if(operation == "AND"){
+        return operand1 & operand2;
+    }
+    else if(operation == "ASR"){
+        return operand1 >> operand2;
+    }
+    else if(operation == "LSR"){
+        return operand1 >> operand2;
+    }
+    else if(operation == "LSL"){
+        return operand1 << operand2;
+    }
+    else if(operation == "NOT"){
+        return ~operand1;
+    }
+    else if(operation == "ORR"){
+        return operand1 | operand2;
+    }
+    else if(operation == "SUB"){
+        return operand1 - operand2;
+    }
+    else if(operation == "XOR"){
+        return operand1 ^ operand2;
+    }
     else{
         return 0;
     }
