@@ -16,18 +16,20 @@ class CommandLine{
     string operation;
     T operand1;
     T operand2;
+    bool flag;
 
     T alu();
     bool calcOverflow();
 
     public:
         CommandLine();
-        CommandLine(string op, T o1, T o2);
+        CommandLine(string op, T o1, T o2, bool f);
         CommandLine(const CommandLine<T>& rhs);
 
         string getOperation();
         T getOperand1();
         T getOperand2();
+        bool getFlag();
         T getResult();
 
         void setOperation(string op);

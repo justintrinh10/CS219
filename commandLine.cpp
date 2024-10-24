@@ -47,13 +47,15 @@ CommandLine<T>::CommandLine(){
     operation = "N/A";
     operand1 = 0;
     operand2 = 0;
+    flag = false;
 }
 
 template<class T>
-CommandLine<T>::CommandLine(string op, T o1, T o2){
+CommandLine<T>::CommandLine(string op, T o1, T o2, bool f){
     operation = op;
     operand1 = o1;
     operand2 = o2;
+    flag = f;
 }
 
 template<class T>
@@ -61,6 +63,7 @@ CommandLine<T>::CommandLine(const CommandLine<T>& rhs){
     operation = rhs.operation;
     operand1 = rhs.operand1;
     operand2 = rhs.operand2;
+    flag = rhs.flag;
 }
 
 template<class T>
@@ -79,12 +82,24 @@ T CommandLine<T>::getOperand2(){
 }
 
 template<class T>
+bool CommandLine<T>::getFlag(){
+    return flag;
+}
+
+template<class T>
 T CommandLine<T>::getResult(){
     return alu();
 }
 
 template<class T>
 void CommandLine<T>::setOperation(string op){
+    if(op[3] == 'S'){
+        op.pop_back();
+        flag = true;
+    }
+    else{
+        flag = false;
+    }
     operation = op;
 }
 
