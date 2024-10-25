@@ -9,7 +9,7 @@
 #include<cstdint>
 using namespace std;
 
-#define INPUTFILE "Programming-Project-1.txt"
+#define INPUTFILE "Programming-Project-2.txt"
 
 template<class T>
 class CommandLine{
