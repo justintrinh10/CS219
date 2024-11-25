@@ -9,36 +9,57 @@
 #include<cstdint>
 using namespace std;
 
-#define INPUTFILE "Programming-Project-2.txt"
+#define INPUTFILE "Programming-Project-3.txt"
+#define NUM_REG 8
+
+//Global Variables
+int flags[4] = {}; //[0] = N flag; [1] = Z flag; [2] = C flag; [3] = V flag
+uint32_t registers[NUM_REG] = {}; //r0-rNUM_REG registers
 
 template<class T>
 class CommandLine{
-    string operation;
-    T operand1;
-    T operand2;
+    string opCode;
+    int regA;
+    int regB;
+
+    bool imm;
+    T immVal;
+
+    bool wr;
+    int regWr;
+
     bool flag;
 
+    bool isAri();
+    bool isLog();
+    bool isShi();
+
     T alu();
-    bool calcOverflow();
 
     public:
         CommandLine();
-        CommandLine(string op, T o1, T o2, bool f);
+        CommandLine(string op, int rA, int rB, bool im, T imV, bool w, bool rW, bool f);
         CommandLine(const CommandLine<T>& rhs);
+        CommandLine(string rawCommandLine);
 
-        string getOperation();
-        T getOperand1();
-        T getOperand2();
+        string getOpCode();
+        int getRegA();
+        int getRegB();
+        bool getImm();
+        T getImmVal();
+        bool getWr();
+        int getRegWr();
         bool getFlag();
         T getResult();
 
-        void setOperation(string op);
-        void setOperand1(T o1);
-        void setOperand2(T o2);
-
-        void displayOverflow();
-        template<class U>
-        friend ostream& operator << (ostream& out, CommandLine<U>& rhs);
+        void setOpCode(string op);
+        void setRegA(int rA);
+        void setRegB(int rB);
+        void setImm(bool im);
+        void setImmVal(T imV);
+        void setWr(bool w);
+        void setRegWr(int rW);
+        void setFlag(bool f);
 };
 
 #include "commandLine.cpp"
